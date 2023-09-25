@@ -1,0 +1,62 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+.contenedor{
+  width: 600px;
+  height: 600px;
+  background-color: black;
+  border-radius: 20px;
+  padding: 10px;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contenedores{
+  width: 600px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+
+}
+
+.img-flores{
+  width: 250px;
+  margin:10px;
+  margin-right:20px;
+  border-radius: 10px;
+}
+.info{
+  font-size: 12px;
+  width: 300px;
+  background-color: aliceblue; 
+  padding: 10px;
+  border-radius: 10px;
+  flex-grow: 1;
+}
