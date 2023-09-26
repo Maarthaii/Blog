@@ -1,76 +1,48 @@
 import { Component } from 'react';
 import './App.css';
-import CardBlogComponent from './components/CardBlogComponent';
-import ChangeButtonsComponent from './components/ChangeButtonsComponent';
+import List from './components/List/List';
+import Info from './components/Info/Info';
+import Background from './components/Background/Background'
 
 
 
 
-class MyBlog extends Component {
+export default class App extends Component {
 
-  constructor() {
+  constructor () {
     super();
     this.state = {
-      img1: '/img/fondo-girasoles.jpg',
-      img2: '/img/fondo-girasoles.jpg',
-      img3: '/img/fondo-girasoles.jpg'
+      backgroundURL: '/img/girasoles1.jpg',
+      infoText: `El girasol, con su radiante esplendor y su eterna búsqueda del sol, simboliza la belleza que florece en cada mirada suya, mientras sus pétalos siguen con devoción la trayectoria del astro rey. En sus giras hacia la luz, revela un amor eterno que siempre se inclina hacia aquel que ilumina su existencia`
     }
 
-    
-    this.changeImg1URL = this.changeImg1URL.bind(this)
-    this.changeImg2URL = this.changeImg2URL.bind(this)
-    this.changeImg3URL = this.changeImg3URL.bind(this)
-  }
-  changeImg1URL () {
-    this.setState({ img1: '/img/fondo-dalia.jpg' })
-  }
-  changeImg2URL () {
-    this.setState({ img2: '/img/fondo-dalia.jpg' })
-  }
-  changeImg3URL () {
-    this.setState({ img3: '/img/fondo-dalia.jpg' })
+
+    this.setBackground = this.setBackground.bind(this)
+    this.setText = this.setText.bind(this)
   }
 
+  setBackground (newURL) {
+    this.setState({
+      backgroundURL: newURL
+    })
+  }
+  setText (newText) {
+    this.setState({
+      infoText: newText
+    })
+  }
 
   render() {
     return (
       <>
-        <section className="blog" >
-          <h1 className='blog__title'>Jardin de sentimientos</h1>
-
-
-          <CardBlogComponent imgUrl={this.state.img1}>
-            El tulipán, delicado y elegante, despliega sus pétalos en un baile armonioso, como un suspiro de amor que se desliza en el viento. Su belleza resplandece como un símbolo de pasión y ternura, cautivando corazones con su encanto cautivador. Cada uno de sus colores vibrantes es un susurro de amor, un regalo de la naturaleza que nos recuerda la dulzura de un romance floreciente.
-          </CardBlogComponent>
-  
-
-          <CardBlogComponent imgUrl={this.state.img2}>
-              La dalia, con su elegancia intrínseca y sus pétalos enigmáticos, es un símbolo de amor que despierta pasiones profundas. Cada curva de sus delicadas formas revela la promesa de un romance floreciente, mientras sus colores vivos despiertan emociones intensas en cada mirada. En el lenguaje secreto de las flores, la dalia susurra palabras de amor eterno y enciende la llama de la pasión en los corazones enamorados.
-          </CardBlogComponent>
-  
-
-          <CardBlogComponent imgUrl={this.state.img3}>
-              El girasol, con su radiante esplendor y su eterna búsqueda del sol, simboliza la belleza que florece en cada mirada suya, mientras sus pétalos siguen con devoción la trayectoria del astro rey. En sus giras hacia la luz, revela un amor eterno que siempre se inclina hacia aquel que ilumina su existencia
-          </CardBlogComponent>
-
-
-        </section>
-
-        <ChangeButtonsComponent 
-            events={{
-              changeImg1URL: this.changeImg1URL,
-              changeImg2URL: this.changeImg2URL,
-              changeImg3URL: this.changeImg3URL
-            }}
-
-        ></ChangeButtonsComponent> 
- 
+        <div className='App'>
+          <Background url={this.state.backgroundURL} />
+          <Info text={this.state.infoText}/>
+          <List setBackground={this.setBackground} setText={this.setText}></List>
+        </div>
       </>
     )
   } 
 }
 
-
-
-export default MyBlog
 
